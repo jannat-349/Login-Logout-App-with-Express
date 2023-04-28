@@ -31,4 +31,17 @@ router.get("/dashboard", (req, res) => {
   }
 });
 
+router.get("/logout", (req, res) => {
+  req.session.destroy(function (err) {
+    if (err) {
+      console.log(err);
+      res.send("Logout error occurred..!!!");
+    }
+    res.render("base", {
+      title: "Login System",
+      logoutMsg: "Successfully logged out...!!",
+    });
+  });
+});
+
 module.exports = router;
